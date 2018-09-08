@@ -3,7 +3,7 @@
   <fullName>Eugene SH</fullName>
   <properties>
     <jenkins.security.ApiTokenProperty>
-      <apiToken>{AQAAABAAAAAwSOLi1AoX83Q9Mn6U+K8uN2UIDVWTch3Od63KpNxd2YawAN/kPZny/ZG3KrVvipT+o1LD1VwDPDnxrIDeeat22Q==}</apiToken>
+      <apiToken>{AQAAABAAAABwVZ0byoo6OL97YIQfcR/7FoFkcFC39zxdI2jZ6Osyc7rSsfTviNXoeBWoD3rqWyaBbCvNzGMa0x7Nlck8Tys79TafZhuN8CtoPadfqcbDv/KCO5riqwMk7wWaZ1KGGv5eujf6s07rlf57iBdi2LuVpK/iFH1UdFXmnmsa6+/3yds=}</apiToken>
     </jenkins.security.ApiTokenProperty>
     <com.cloudbees.plugins.credentials.UserCredentialsProvider_-UserCredentialsProperty plugin="credentials@2.1.18">
       <domainCredentialsMap class="hudson.util.CopyOnWriteMap$Hash"/>
@@ -34,5 +34,8 @@
     <hudson.tasks.Mailer_-UserProperty plugin="mailer@1.21">
       <emailAddress>gesha8610@gmail.com</emailAddress>
     </hudson.tasks.Mailer_-UserProperty>
+    <jenkins.security.LastGrantedAuthoritiesProperty>
+      <timestamp>0</timestamp>
+    </jenkins.security.LastGrantedAuthoritiesProperty>
   </properties>
 </user>
