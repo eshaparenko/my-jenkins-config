@@ -21,7 +21,7 @@
       <submoduleCfg class="list"/>
       <extensions/>
     </scm>
-    <scriptPath>jekins-in-docker/Jenkinsfile</scriptPath>
+    <scriptPath>/jenkins-in-docker/Jenkinsfile</scriptPath>
     <lightweight>true</lightweight>
   </definition>
   <triggers/>
