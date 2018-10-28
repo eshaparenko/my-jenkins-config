@@ -10,6 +10,7 @@
       <userRemoteConfigs>
         <hudson.plugins.git.UserRemoteConfig>
           <url>git@github.com:eshaparenko/cucumber_java.git</url>
+          <credentialsId>9180ee27-6a72-43a6-b99f-7f2fb7755c07</credentialsId>
         </hudson.plugins.git.UserRemoteConfig>
       </userRemoteConfigs>
       <branches>
