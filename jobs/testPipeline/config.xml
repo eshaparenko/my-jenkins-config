@@ -10,6 +10,13 @@
    stage(&apos;Git clone&apos;) {
             git &apos;git@github.com:eshaparenko/cucumber_java.git&apos;
         }
+    stage(&apos;Build&apos;) {
+        docker
+                .image(&apos;jenkins-agent-ubuntu&apos;)
+                .inside(&apos;--volumes-from jenkins-master&apos;) {
+            sh &quot;bash ./build.sh;&quot;
+        }
+    }
 }</script>
     <sandbox>true</sandbox>
   </definition>
