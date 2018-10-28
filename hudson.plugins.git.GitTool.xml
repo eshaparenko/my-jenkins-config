@@ -2,7 +2,7 @@
 <hudson.plugins.git.GitTool_-DescriptorImpl plugin="git-client@2.7.3">
   <installations class="hudson.plugins.git.GitTool-array">
     <hudson.plugins.git.GitTool>
-      <name>Default</name>
+      <name>git</name>
       <home>git</home>
       <properties>
         <hudson.tools.InstallSourceProperty>
