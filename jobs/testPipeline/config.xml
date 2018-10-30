@@ -20,7 +20,7 @@ def IMAGE_NAME = &quot;mvn_project:latest&quot;
     pipeline {
         adockerfile {
                  filename &apos;Dockerfile&apos;
-                 label &apos;&quot;$IMAGE_NAME&quot;&apos;
+                 label &apos;$IMAGE_NAME&apos;
                  args &apos;-v $HOME/.m2:/root/.m2&apos;
                  args &apos;-v $WORKSPACE/reports:/automation/reports&apos;
 
@@ -34,7 +34,7 @@ def IMAGE_NAME = &quot;mvn_project:latest&quot;
             stage(&quot;UI Validation Tests&quot;) {
                   steps {
                     script {
-                      sh &quot;mvn clean test -Dmaven.repo.local=&quot;/root/.m2&quot; -Dcucumber.options=&quot;src/test/java/features --tags &apos;@SmokeTest&apos; --glue steps&quot;&quot;
+                      sh &apos;mvn clean test -Dmaven.repo.local=/root/.m2 -Dcucumber.options=src/test/java/features --tags \&apos;@SmokeTest\&apos; --glue steps&apos;
                     }
                   }
                 }
