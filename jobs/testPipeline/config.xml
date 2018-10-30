@@ -17,9 +17,9 @@
     agent none
     stages {
         stage(&apos;Back-end&apos;) {
-            agent {
-                docker { image &apos;maven:3-alpine&apos; }
-            }
+            dockerfile {
+        args &apos;-v /tmp:/tmp&apos;
+    }
             steps {
                 sh &apos;mvn --version&apos;
             }
