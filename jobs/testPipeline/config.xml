@@ -35,7 +35,7 @@ def IMAGE_NAME = &quot;mvn_project:latest&quot;
                       sh &quot;mkdir -p reports&quot;
                     }
                     script {
-                      sh &quot;mvn --version&quot;&quot;
+                      sh &quot;mvn --version&quot;
                     }
                   }
                 }
