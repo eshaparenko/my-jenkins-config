@@ -23,6 +23,7 @@
                 sh &apos;mvn --version&apos;
             }
         }
+    }    
 }</script>
     <sandbox>true</sandbox>
   </definition>
