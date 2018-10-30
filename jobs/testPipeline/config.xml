@@ -22,7 +22,7 @@ def MAVEN_REPO_PATH = &quot;root/maven/repository&quot;
         agent {
             docker {
                 image &apos;maven:3-alpine&apos;
-                args &apos;-v $HOME/.m2:$MAVEN_REPO_PATH&apos;
+                args &apos;-v $HOME/.m2:root/maven/repository&apos;
             }
         }
         stages {
