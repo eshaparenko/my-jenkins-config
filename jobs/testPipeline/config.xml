@@ -15,29 +15,24 @@
   <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@2.59">
     <script>#!groovy
 
-def PROJECT_NAME = &quot;cucumber-test-automation&quot;
-def IMAGE_NAME = &quot;mvn_project:latest&quot;
-    pipeline {
-        agent {
-            dockerfile {
-                 args &apos;-v $HOME/.m2:/root/.m2&apos;
-                 args &apos;-v /automation/reports:/tmp/reports&apos;
-             }
-        }
-
-        stages {
-            
-            stage(&quot;UI Validation Tests&quot;) {
-                  steps {
-                    script {
-                      sh &apos;mvn clean test -Dmaven.repo.local=/root/.m2 -Dcucumber.options=&quot;src/test/java/features --tags \&apos;@SmokeTest\&apos; --glue steps&quot;&apos;
-                    }
-                  }
-                }
-        }
-
+node(&apos;master&apos;) {
+    stage(&apos;Checkout&apos;) {
+        checkout scm
     }
-</script>
+
+    stage(&apos;Run tests&apos;) {
+        withMaven(maven: &apos;Maven 3&apos;) {
+                  dir(&apos;cucumber_demo&apos;) {
+                    sh &apos;mvn test -Dcucumber.options=&quot;--tags @SmokeTest&quot;&apos;
+                  }
+    }
+    }
+
+
+
+
+
+}</script>
     <sandbox>true</sandbox>
   </definition>
   <triggers/>
