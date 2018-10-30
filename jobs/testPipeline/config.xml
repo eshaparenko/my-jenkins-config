@@ -26,11 +26,7 @@ def IMAGE_NAME = &quot;mvn_project:latest&quot;
         }
 
         stages {
-            stage(&apos;Compile&apos;) {
-                steps {
-                    sh &apos;mvn compile -Dmaven.repo.local=/root/.m2&apos;
-                }
-            }
+            
             stage(&quot;UI Validation Tests&quot;) {
                   steps {
                     script {
