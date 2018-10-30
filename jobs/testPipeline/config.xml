@@ -18,39 +18,23 @@
 def PROJECT_NAME = &quot;cucumber-test-automation&quot;
 def IMAGE_NAME = &quot;mvn_project:latest&quot;
     pipeline {
-        agent {
-                label &apos;jenkins-agent-ubuntu&apos;
-            }
+        adockerfile {
+                 filename &apos;Dockerfile&apos;
+                 label &apos;&quot;$IMAGE_NAME&quot;&apos;
+                 args &apos;-v $HOME/.m2:/root/.m2&apos;
+                 args &apos;-v $WORKSPACE/reports:/automation/reports&apos;
+
+             }
         stages {
             stage(&apos;Compile&apos;) {
-                agent {
-                      docker {
-                         image &apos;maven:3-alpine&apos;
-                         args &apos;-v $HOME/.m2:/root/.m2&apos;
-                      }
-                }
                 steps {
                     sh &apos;mvn compile -Dmaven.repo.local=/root/.m2&apos;
                 }
             }
-            stage(&apos;Docker Image Build&apos;) {
-                steps {
-                    echo &apos;Building Docker Image...&apos;
-                    script {
-                        builtImage = docker.build(&quot;$IMAGE_NAME&quot;, &quot;-f Dockerfile .&quot;)
-                    }
-                }
-            }
             stage(&quot;UI Validation Tests&quot;) {
-                  
                   steps {
                     script {
-                      sh &quot;mkdir -p $WORKSPACE/reports&quot;
-                    }
-                    script {
-                      sh &quot;docker run --rm --name $PROJECT_NAME \
-                            --user 1000:1000 \
-                            $IMAGE_NAME&quot;
+                      sh &quot;mvn clean test -Dmaven.repo.local=&quot;/root/.m2&quot; -Dcucumber.options=&quot;src/test/java/features --tags &apos;@SmokeTest&apos; --glue steps&quot;&quot;
                     }
                   }
                 }
