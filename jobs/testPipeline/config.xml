@@ -17,7 +17,7 @@
 
 def PROJECT_NAME = &quot;cucumber-test-automation&quot;
 def IMAGE_NAME = &quot;mvn_project:latest&quot;
-def MAVEN_REPO_PATH = &quot;/maven/repository&quot;
+def MAVEN_REPO_PATH = &quot;root/maven/repository&quot;
     pipeline {
         agent {
             docker {
