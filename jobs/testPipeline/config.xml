@@ -12,26 +12,49 @@
   <description></description>
   <keepDependencies>false</keepDependencies>
   <properties/>
-  <definition class="org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition" plugin="workflow-cps@2.59">
-    <scm class="hudson.plugins.git.GitSCM" plugin="git@3.9.1">
-      <configVersion>2</configVersion>
-      <userRemoteConfigs>
-        <hudson.plugins.git.UserRemoteConfig>
-          <url>git@github.com:eshaparenko/cucumber_java.git</url>
-          <credentialsId>9180ee27-6a72-43a6-b99f-7f2fb7755c07</credentialsId>
-        </hudson.plugins.git.UserRemoteConfig>
-      </userRemoteConfigs>
-      <branches>
-        <hudson.plugins.git.BranchSpec>
-          <name>*/master</name>
-        </hudson.plugins.git.BranchSpec>
-      </branches>
-      <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
-      <submoduleCfg class="list"/>
-      <extensions/>
-    </scm>
-    <scriptPath>Jenkinsfile</scriptPath>
-    <lightweight>true</lightweight>
+  <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@2.59">
+    <script>#!groovy
+
+def PROJECT_NAME = &quot;cucumber-test-automation&quot;
+def IMAGE_NAME = &quot;mvn_project:latest&quot;
+ef MAVEN_REPO_PATH = &quot;/maven/repository&quot;
+    pipeline {
+        agent {
+            docker {
+                image &apos;maven:3-alpine&apos;
+                args &apos;-v $HOME/.m2:$MAVEN_REPO_PATH&apos;
+            }
+        }
+        stages {
+            stage(&apos;Build&apos;) {
+                steps {
+                    sh &apos;mvn compile -Dmaven.repo.local=$MAVEN_REPO_PATH&apos;
+                }
+            }
+            stage(&apos;Docker Image Build&apos;) {
+                                steps {
+                                    echo &apos;Building Docker Image...&apos;
+                                    script {
+                                        builtImage = docker.build(&quot;$IMAGE_NAME&quot;, &quot;-f Dockerfile .&quot;)
+                                    }
+                                }
+                            }
+            stage(&quot;UI Validation Tests&quot;) {
+                  steps {
+                    script {
+                      sh &quot;mkdir -p $WORKSPACE/reports&quot;
+                    }
+                    script {
+                      sh &quot;docker run --rm --name $PROJECT_NAME \
+                            --user 1000:1000 \
+                            $IMAGE_NAME&quot;
+                    }
+                  }
+                }
+        }
+
+    }</script>
+    <sandbox>true</sandbox>
   </definition>
   <triggers/>
   <disabled>false</disabled>
