@@ -17,9 +17,11 @@
     agent none
     stages {
         stage(&apos;Back-end&apos;) {
-            dockerfile {
-        args &apos;-v /tmp:/tmp&apos;
-    }
+            agent {
+                dockerfile {
+                args &apos;-v /tmp:/tmp&apos;
+            }
+            }
             steps {
                 sh &apos;mvn --version&apos;
             }
