@@ -19,7 +19,7 @@ def PROJECT_NAME = &quot;cucumber-test-automation&quot;
 def IMAGE_NAME = &quot;mvn_project:latest&quot;
     pipeline {
         agent {
-            adockerfile {
+            dockerfile {
                  filename &apos;Dockerfile&apos;
                  label &apos;$IMAGE_NAME&apos;
                  args &apos;-v $HOME/.m2:/root/.m2&apos;
