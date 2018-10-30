@@ -34,7 +34,7 @@ def IMAGE_NAME = &quot;mvn_project:latest&quot;
                 agent none
                   steps {
                     script {
-                      sh &quot;mkdir -p ${pwd}/reports&quot;
+                      sh &quot;mkdir -p reports&quot;
                     }
                     script {
                       sh &quot;docker run --rm --name $PROJECT_NAME \
