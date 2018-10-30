@@ -19,7 +19,6 @@ def PROJECT_NAME = &quot;cucumber-test-automation&quot;
 def IMAGE_NAME = &quot;mvn_project:latest&quot;
     pipeline {
         agent none
-        }
         stages {
             agent {none}
             stage(&apos;Docker Image Build&apos;) {
@@ -42,7 +41,8 @@ def IMAGE_NAME = &quot;mvn_project:latest&quot;
                     }
                   }
                 }
-        }
+        }    
+   }
 
     
 </script>
