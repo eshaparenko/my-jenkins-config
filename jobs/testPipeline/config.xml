@@ -42,9 +42,7 @@ def IMAGE_NAME = &quot;mvn_project:latest&quot;
                 }
             }
             stage(&quot;UI Validation Tests&quot;) {
-                  agent {
-
-                  }
+                  
                   steps {
                     script {
                       sh &quot;mkdir -p $WORKSPACE/reports&quot;
