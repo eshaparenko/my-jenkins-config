@@ -21,7 +21,7 @@ def IMAGE_NAME = &quot;mvn_project:latest&quot;
         agent {
             dockerfile {
                  args &apos;-v $HOME/.m2:/root/.m2&apos;
-                 args &apos;-v $(pwd)/reports:/automation/reports&apos;
+                 args &apos;-v &quot;$(pwd)&quot;/reports:/automation/reports&apos;
 
              }
         }
