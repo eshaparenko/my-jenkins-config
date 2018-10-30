@@ -14,17 +14,15 @@
   <properties/>
   <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@2.59">
     <script>pipeline {
-    agent any
-    tools {
-        maven &apos;mvn&apos; 
-    }
     stages {
-        stage(&apos;Example&apos;) {
+        stage(&apos;Back-end&apos;) {
+            agent {
+                docker { image &apos;maven:3-alpine&apos; }
+            }
             steps {
                 sh &apos;mvn --version&apos;
             }
         }
-    }
 }</script>
     <sandbox>true</sandbox>
   </definition>
