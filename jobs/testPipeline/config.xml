@@ -18,7 +18,7 @@
 def PROJECT_NAME = &quot;cucumber-test-automation&quot;
 def IMAGE_NAME = &quot;mvn_project:latest&quot;
     pipeline {
-        agent {none}
+        agent none
         }
         stages {
             agent {none}
