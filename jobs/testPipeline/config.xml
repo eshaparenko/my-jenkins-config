@@ -35,10 +35,7 @@ def IMAGE_NAME = &quot;mvn_project:latest&quot;
                       sh &quot;mkdir -p reports&quot;
                     }
                     script {
-                      sh &quot;docker run --rm --name $PROJECT_NAME \
-                            --user 1000:1000 \
-                            --mount type=bind,source=$WORKSPACE/reports,target=/automation/reports \
-                            $IMAGE_NAME&quot;
+                      sh &quot;mvn --version&quot;&quot;
                     }
                   }
                 }
