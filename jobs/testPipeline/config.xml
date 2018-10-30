@@ -18,11 +18,10 @@
 def PROJECT_NAME = &quot;cucumber-test-automation&quot;
 def IMAGE_NAME = &quot;mvn_project:latest&quot;
     pipeline {
-        agent none
+        agent any
         stages {
             
             stage(&apos;Docker Image Build&apos;) {
-                                agent none
                                 steps {
                                     echo &apos;Building Docker Image...&apos;
                                     script {
@@ -31,7 +30,6 @@ def IMAGE_NAME = &quot;mvn_project:latest&quot;
                                 }
                             }
             stage(&quot;UI Validation Tests&quot;) {
-                agent none
                   steps {
                     script {
                       sh &quot;mkdir -p reports&quot;
